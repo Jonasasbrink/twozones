@@ -5,7 +5,7 @@ import requests
 
 # --- Konfiguration ---
 MQ2_SENSOR_PIN = 14  # GPIO-pin för den digitala utgången från MQ-2-sensorn
-THINGSPEAK_API_KEY = "BNZYCVH4I4RXOURK"
+THINGSPEAK_API_KEY = "XXX"
 THINGSPEAK_URL = "https://api.thingspeak.com/update"
 INTERVAL = 15  # Minsta uppdateringsintervall (ThingSpeak tillåter 15 sekunder)
 
