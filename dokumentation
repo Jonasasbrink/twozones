@@ -55,13 +55,5 @@ Slutligen kunde vi se realtidsdata i Grafana. Här kunde vi analysera temperatur
 Avslutning 
 Sammanfattningsvis har vi byggt ett IoT-system som samlar in och presenterar klimatdata i realtid. Genom att använda Raspberry Pi, Python, ThingSpeak och Grafana har vi skapat en fungerande lösning som kan utvidgas och förbättras i framtiden. Tack för att ni lyssnade! 
 
- 
-
-
-Hårdvaruansvarig – Installerar och kopplar sensorer Jonas Oskar
-Backend-ansvarig – Skriver Python-kod för datahämtning Jonas Oskar
-Visualiseringsansvarig – Skapar dashboard i Grafana Oskar
-Dokumentationsansvarig – Dokumenterar och sammanställer Marcus
-Projektledare – Ser till att gruppen håller tidsplanen Jonas
 
  
