@@ -5,7 +5,7 @@ import RPi.GPIO as GPIO
 import requests
 
 # ThingSpeak API detaljer
-api_key = "Y9ML9HRA7OZKY2DR"
+api_key = "XXX"
 channel_url = "https://api.thingspeak.com/update"
 
 # DHT11 sensor inställningar
