@@ -1,0 +1,60 @@
+Smarta Klimatzoner – Grupp 4 
+
+Introduktion 
+Detta är en presentation om Smarta Klimatzoner. 
+I dom här slidsen ska vi genom vårt projekt där vi skapat en IoT-lösning för att övervaka klimatförhållanden med hjälp av sensorer och en molnbaserad plattform. 
+
+
+Vad gjorde vi? Hur tänkte vi?
+Vi delade in så att Jonas hade en zon hemma hos sig och Oskar hade en zon hemma hos sig. Vi valde att använda fyra olika sensorer. 
+
+DHT11 för temperatur och luftfuktighet 
+Rain sensor för att detektera nederbörd 
+Barometer för lufttryck 
+MQ-2 för att mäta gasnivåer 
+Jonas använde DHT11 och rain sensor när Oskar använde barometer och MQ-2 gas, 
+syftet var att få in realtidsdata och visualisera den i ett användarvänligt gränssnitt. 
+
+Det är lite tråkigt att vi inte hade en analog input på raspberry pi 3B+, eftersom på sensorerna finns det chans att få mer specifik data om man kör via analog input. 
+Men nu fick vi koppla den på Digital output bara och då fick vi väldigt binära svar, tillexempel 1 eller 0 eller Ja eller Nej. 
+Vid ett riktigt användningsområde så hade det varit mer lämpligt att ha en analog input så man får ut mer specifik data kring sensorerna.  
+
+
+Flödeschema arbetsväg
+
+Här ser vi arbetsflödet för projektet. Vi började med att koppla sensorerna till en Raspberry Pi. Sedan utvecklade vi Python-kod för att läsa av data och skicka den till en molnplattform via API-anrop.
+Därefter integrerade vi datan i Grafana för att skapa visualiseringar och resultat. 
+
+Raspberry Pi:s och sensorer
+Vi använde Raspberry Pi som huvudplattform för att styra och kommunicera med våra sensorer. Genom GPIO-pinnar kopplade vi sensorerna och hämtade mätvärden kontinuerligt. 
+
+Python Kod
+Vi skrev kod i Python för att läsa av sensorvärden och skicka dem vidare till ThingSpeak via API-anrop.
+Här ser ni ett exempel på min kod och hur vi skickade temperatur och regndata via en HTTP-förfrågan. 
+
+
+API anrop via Python kod till ThingSpeak 
+För att kunna samla och lagra data använde vi ThingSpeak. 
+Först så skapade vi en gemensam kanal som både jag och oskar skickade våran data till. 
+Men vi insåg efter ett tag att det klarade inte thingspeak av. Väligt mycket data ramlade bort. 
+Den valde antingen min RPI eller Oskars RPI. Vi testade att ändra intervallerna att skicka data både högre och lägre intervaller, 
+men thingspeak laddartydligen  bara in data varje 15:e sekund så det gick inte heller. 
+
+Sen testade vi att skicka API anrop till varje field på varje kanal, men den ville fortfarande inte. 
+Så vi skapade separata kanaler för oss båda, jag hade en kanal och oskar en kanal. Vilket gjorde att data kom in utan problem.  
+
+
+Koppling till Grafana från Thingspeak 
+Nästa steg var att hämta datan från ThingSpeak och visualisera den i Grafana, detta kunde vi göra med hjälp av JSON datan från våra respektive kanaler. 
+Vi använde Infinity-pluginet för att ansluta ThingSpeak till Grafana och konfigurerade datakällan i JSON-format. 
+För att få Infinity och Grafana att förstå vilken data den ska presentera från JSON-filen så fick vi lägga till “JSON Path” raden samt kolumnerna för “field” datan. 
+
+Grafana visualisering  
+Slutligen kunde vi se realtidsdata i Grafana. Här kunde vi analysera temperaturförändringar, regnstatus, lufttryck och gasnivåer i våra zoner på ett överskådligt sätt. 
+
+Avslutning 
+Sammanfattningsvis har vi byggt ett IoT-system som samlar in och presenterar klimatdata i realtid. Genom att använda Raspberry Pi, Python, ThingSpeak och Grafana har vi skapat en fungerande lösning som kan utvidgas och förbättras i framtiden. Tack för att ni lyssnade! 
+
+ 
+
+ 
